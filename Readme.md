@@ -49,3 +49,19 @@ All calculations are performed by the analytics pipeline, while AI focuses only 
 
 ### Purpose
 Simulates how modern organizations use AI-assisted analytics to help stakeholders quickly understand business performance without manual analysis.
+
+
+## Day 5 Progress — Ask-Your-Data (AI Analyst Chat)
+
+### New Feature
+Added an interactive AI question interface that allows users to ask business questions about dataset performance.
+
+### Capabilities
+- Users can ask natural language questions about KPIs and trends
+- AI answers using structured business context (not raw data)
+- Ensures reliable, analysis-focused responses
+
+### Example Questions
+- "Which period performed worst?"
+- "Is revenue improving over time?"
+- "Summarize overall business performance."
