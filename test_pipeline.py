@@ -3,6 +3,7 @@ from src.profiler import profile_dataset
 from src.cleaner import run_cleaning_pipeline
 from src.kpi_engine import run_kpi_engine
 from src.insight_engine import run_insight_engine
+from src.ai_engine import generate_ai_insights
 
 # Load dataset
 df = load_data("data/raw/online_retail.xlsx")
@@ -24,5 +25,8 @@ print(results["monthly_trend"].head())
 
 # Results of AI context
 ai_context = run_insight_engine(results)
-
 print(ai_context)
+
+# Results of AI insights
+ai_insights = generate_ai_insights(ai_context)
+print(ai_insights)
