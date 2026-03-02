@@ -65,3 +65,15 @@ Added an interactive AI question interface that allows users to ask business que
 - "Which period performed worst?"
 - "Is revenue improving over time?"
 - "Summarize overall business performance."
+
+
+## Day 6 Progress — Streamlit Web Application
+
+Built a full web interface using Streamlit:
+
+- Upload dataset
+- Automatic KPI generation
+- AI executive insights
+- Interactive business Q&A
+
+The project now functions as a mini AI-powered analytics product.
