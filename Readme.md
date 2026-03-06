@@ -1,79 +1,124 @@
-## Day 1 Progress:
-- Project structure created
-- Dataset ingestion module built
-- Dataset profiling system implemented
-- Rule-based cleaning engine completed
+# AI Business KPI Analyst
 
+An AI-powered analytics application that automatically analyzes business datasets, generates KPIs, and produces executive insights using AI.
 
-## Day 2 Progress
-- Built KPI Engine
-- Automatic revenue/quantity/date detection
+Users can upload a dataset and instantly receive performance analysis and business explanations.
+
+---
+
+## Problem Statement
+
+Business teams often rely on analysts to manually clean datasets, calculate KPIs, and interpret trends. This project demonstrates how AI and automated analytics pipelines can assist in performing these tasks instantly.
+
+The system simulates an **AI-powered business analyst** capable of analyzing datasets and explaining performance trends.
+
+---
+
+## System Architecture
+
+Dataset Upload  
+↓  
+Data Profiler  
+↓  
+Cleaning Engine  
+↓  
+KPI Engine  
+↓  
+Insight Engine  
+↓  
+Gemini AI  
+↓  
+Streamlit Web App
+
+---
+
+## Features
+
+- Automatic dataset ingestion (CSV / Excel)
+- Automated data cleaning pipeline
+- KPI generation and trend analysis
+- AI-generated executive insights
+- Ask-your-data question interface
+- Streamlit web application for interaction
+
+---
+
+## Tech Stack
+
+- Python
+- Pandas
+- Streamlit
+- Google Gemini API
+- Modular Data Pipeline Architecture
+
+---
+
+## Application Preview
+
+### Dashboard
+![Dashboard](assets/app_dashboard.png)
+
+### KPI
+![KPI](assets/key_performance_indicators.png)
+
+### AI Insights
+![AI Insights](assets/ai_insights.png)
+
+### AI Analyst
+![AI Analyst](assets/ai_analyst.png)
+
+---
+
+## How to Run
+
+Clone the repository: https://github.com/KarthikKumarP-475/AI-KPI-Analyst.git
+
+Install dependencies: python -m pip install -r requirements.txt
+
+Add your Gemini API key in `.env`: GEMINI_API_KEY=your_api_key_here
+
+Run the application: streamlit run app.py
+
+## Day 1
+
+- Created project structure
+- Implemented dataset ingestion module
+- Built dataset profiling system
+- Developed rule-based data cleaning engine
+
+## Day 2
+
+- Implemented KPI Engine
+- Automatic detection of revenue, quantity, and date fields
 - Generated business KPIs
-- Monthly revenue trend analysis
+- Added monthly revenue trend analysis
 
+## Day 3
 
-## Day 3 Progress — Insight Engine Foundation
+- Built Insight Engine to convert KPIs into structured summaries
+- Added growth trend detection
+- Prepared AI-ready business context
 
-### New Features
-- Built Insight Engine module
-- Converted KPI outputs into structured business summaries
-- Implemented growth trend detection
-- Created AI-ready context generation layer
+## Day 4
 
-### Purpose
-This layer prepares clean business context before sending data to an AI model, preventing hallucinations and ensuring reliable executive insights.
+- Integrated Google Gemini AI for automated insights
+- Implemented ai_engine.py
+- Generated executive-level business explanations
+Example output:
+ "Revenue growth appears driven by increasing order quantities, while mid-period fluctuations suggest seasonal demand patterns."
 
-## Current Pipeline
-Dataset → Profiling → Cleaning → KPI Engine → Insight Engine → AI (Next)
+## Day 5
 
+- Added AI Ask-Your-Data interface
+- Users can ask business questions about dataset performance
+Example questions:
+- Which period performed worst?
+- Is revenue improving over time?
+- Summarize overall business performance.
 
-## Day 4 Progress — AI Insight Generation
+## Day 6
 
-### New Capability Added
-Integrated Google Gemini AI to automatically generate executive-level business insights from KPI analysis.
-
-### What Was Implemented
-- Connected Google Gemini API using secure environment variables
-- Built AI Engine module (`ai_engine.py`)
-- Converted structured KPI summaries into AI-ready prompts
-- Generated automated business explanations based on performance metrics
-
-### How It Works
-Dataset → Profiling → Cleaning → KPI Engine → Insight Engine → Gemini AI → Executive Insights
-
-The AI does **not calculate metrics**.  
-All calculations are performed by the analytics pipeline, while AI focuses only on interpretation and explanation.
-
-### Example Output
-> "Revenue growth appears driven by increasing order quantities, while mid-period fluctuations suggest potential seasonal demand patterns."
-
-### Purpose
-Simulates how modern organizations use AI-assisted analytics to help stakeholders quickly understand business performance without manual analysis.
-
-
-## Day 5 Progress — Ask-Your-Data (AI Analyst Chat)
-
-### New Feature
-Added an interactive AI question interface that allows users to ask business questions about dataset performance.
-
-### Capabilities
-- Users can ask natural language questions about KPIs and trends
-- AI answers using structured business context (not raw data)
-- Ensures reliable, analysis-focused responses
-
-### Example Questions
-- "Which period performed worst?"
-- "Is revenue improving over time?"
-- "Summarize overall business performance."
-
-
-## Day 6 Progress — Streamlit Web Application
-
-Built a full web interface using Streamlit:
-
-- Upload dataset
-- Automatic KPI generation
-- AI executive insights
-- Interactive business Q&A
-
-The project now functions as a mini AI-powered analytics product.
+- Built Streamlit web application
+- Upload dataset and automatically generate KPIs
+- AI insights and interactive Q&A interface
+- The system now functions as a mini AI-powered analytics product.
