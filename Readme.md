@@ -26,9 +26,11 @@ KPI Engine
 ↓  
 Insight Engine  
 ↓  
-Gemini AI  
+Gemini AI Analysis  
 ↓  
-Streamlit Web App
+Streamlit Web App  
+↓  
+Business Report Generator (PDF)
 
 ---
 
@@ -122,3 +124,21 @@ Example questions:
 - Upload dataset and automatically generate KPIs
 - AI insights and interactive Q&A interface
 - The system now functions as a mini AI-powered analytics product.
+
+## Day 7 Progress — Documentation & Project Structure
+
+Improved project documentation and usability:
+
+- Added system architecture overview
+- Organized README into clear sections
+- Added requirements.txt for easy dependency installation
+- Prepared project for easier setup and demonstration
+
+## Day 8 Progress — Business Report Generation
+
+Added automatic PDF report generation.
+
+Users can download a business performance report containing:
+- KPI summary
+- AI insights
+- timestamped analysis

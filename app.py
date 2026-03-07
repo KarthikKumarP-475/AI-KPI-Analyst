@@ -7,6 +7,7 @@ from src.kpi_engine import run_kpi_engine
 from src.insight_engine import run_insight_engine
 from src.ai_engine import generate_ai_insights
 from src.question_engine import ask_business_question
+from src.report_engine import generate_report
 
 st.set_page_config(page_title="AI KPI Analyst", layout="wide")
 
@@ -54,3 +55,16 @@ if uploaded_file:
     if user_question:
         answer = ask_business_question(ai_context, user_question)
         st.write(answer)
+
+    # Generate Business Report
+    if st.button("Generate Business Report"):
+
+        report_file = generate_report(kpis, insights)
+
+        with open(report_file, "rb") as f:
+            st.download_button(
+                label="Download Report",
+                data=f,
+                file_name="business_report.pdf",
+                mime="application/pdf"
+            )
