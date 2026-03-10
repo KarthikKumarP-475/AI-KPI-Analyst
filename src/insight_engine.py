@@ -57,3 +57,40 @@ def run_insight_engine(results):
     print("--- INSIGHT ENGINE READY ---\n")
 
     return context
+
+
+# Dectection of Revenue Trend
+def detect_revenue_trend(monthly):
+
+    if monthly is None or len(monthly) < 2:
+        return "Unknown"
+
+    first = monthly.iloc[0, 1]
+    last = monthly.iloc[-1, 1]
+
+    if last > first:
+        return "Increasing"
+    elif last < first:
+        return "Decreasing"
+    else:
+        return "Stable"
+
+
+# Revenue Concentration
+def calculate_market_concentration(dimensions):
+
+    if "Country" not in dimensions:
+        return "Unknown"
+
+    country_sales = list(dimensions["Country"].values())
+
+    total = sum(country_sales)
+
+    top_share = max(country_sales) / total
+
+    if top_share > 0.6:
+        return "High concentration"
+    elif top_share > 0.3:
+        return "Moderate concentration"
+    else:
+        return "Low concentration"

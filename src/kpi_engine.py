@@ -88,13 +88,16 @@ def run_kpi_engine(df):
 
 
 # Dimension Analysis Function
+import pandas as pd
+
+
 def analyze_dimensions(df):
 
     dimension_results = {}
 
     for col in df.columns:
 
-        if df[col].dtype == "object":
+        if pd.api.types.is_string_dtype(df[col]):
 
             if df[col].nunique() < 50:  # avoid IDs
 
@@ -106,5 +109,5 @@ def analyze_dimensions(df):
                 )
 
                 dimension_results[col] = revenue_by_dimension.to_dict()
-
+    print("Detected dimensions:", dimension_results)
     return dimension_results

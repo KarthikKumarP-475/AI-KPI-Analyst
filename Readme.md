@@ -36,12 +36,14 @@ Business Report Generator (PDF)
 
 ## Features
 
-- Automatic dataset ingestion (CSV / Excel)
-- Automated data cleaning pipeline
-- KPI generation and trend analysis
+- Automated dataset ingestion
+- Rule-based data cleaning pipeline
+- Automatic KPI generation
+- Dynamic categorical dimension analysis
 - AI-generated executive insights
-- Ask-your-data question interface
-- Streamlit web application for interaction
+- Interactive Ask-Your-Data interface
+- Streamlit web application
+- Automated business report generation (PDF)
 
 ---
 
@@ -70,6 +72,18 @@ Business Report Generator (PDF)
 ![AI Analyst](assets/ai_analyst.png)
 
 ---
+
+## Demo Datasets
+
+Sample datasets are provided in the `sample_data/` directory for quick testing.
+
+Included datasets:
+
+- **Online Retail** — transactional retail dataset with country-level sales.
+- **Superstore Sales** — retail dataset with region, category, and segment dimensions.
+- **Brazilian E-Commerce** — multi-table e-commerce dataset containing order and customer information.
+
+Users can upload any of these datasets directly in the Streamlit application to explore KPI analysis and AI-generated insights.
 
 ## How to Run
 

@@ -1,6 +1,7 @@
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 import datetime
+import textwrap
 
 
 def generate_report(kpis, insights):
@@ -43,11 +44,12 @@ def generate_report(kpis, insights):
     text_object = c.beginText(60, y)
     text_object.setFont("Helvetica", 12)
 
-    for line in insights.split("\n"):
+    wrapped_lines = textwrap.wrap(insights, 80)
+
+    for line in wrapped_lines:
         text_object.textLine(line)
 
     c.drawText(text_object)
 
     c.save()
-
     return filename

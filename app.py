@@ -70,10 +70,13 @@ if uploaded_file:
 
         report_file = generate_report(kpis, insights)
 
-        with open(report_file, "rb") as f:
-            st.download_button(
-                label="Download Report",
-                data=f,
-                file_name="business_report.pdf",
-                mime="application/pdf"
-            )
+        if report_file:
+            with open(report_file, "rb") as f:
+                st.download_button(
+                    label="Download Report",
+                    data=f,
+                    file_name="business_report.pdf",
+                    mime="application/pdf"
+                )
+        else:
+            st.error("Report generation failed.")
