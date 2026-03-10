@@ -41,6 +41,15 @@ if uploaded_file:
     col2.metric("Avg Order Value", round(kpis.get("average_order_value", 0), 2))
     col3.metric("Total Quantity", kpis.get("total_quantity", 0))
 
+    # Show Dimension Results in Streamlit
+    st.subheader("📊 Dimension Analysis")
+
+    dimensions = results.get("dimensions", {})
+
+    for dim, values in dimensions.items():
+        st.write(f"Top {dim} Performance")
+        st.write(values)
+
     # AI Insights
     st.subheader("🤖 AI Executive Insights")
 

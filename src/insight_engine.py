@@ -4,6 +4,7 @@ def build_business_summary(results):
 
     kpis = results["kpis"]
     monthly = results["monthly_trend"]
+    dimensions = results.get("dimensions", {})
 
     summary = {}
 
@@ -11,6 +12,7 @@ def build_business_summary(results):
     summary["total_revenue"] = round(kpis.get("total_revenue", 0), 2)
     summary["avg_order_value"] = round(kpis.get("average_order_value", 0), 2)
     summary["total_quantity"] = kpis.get("total_quantity", 0)
+    summary["dimensions"] = dimensions
 
     # Trend detection
     if monthly is not None and len(monthly) > 1:
@@ -35,6 +37,7 @@ def create_ai_context(summary):
     Average Order Value: {summary['avg_order_value']}
     Total Quantity Sold: {summary['total_quantity']}
     Revenue Growth: {summary.get('growth_percent', 0)}%
+    Dimension Performance: {summary.get("dimensions")}
 
     Provide executive-level insights explaining performance trends.
     """

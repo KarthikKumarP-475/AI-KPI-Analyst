@@ -76,9 +76,35 @@ def run_kpi_engine(df):
 
     monthly_trend = revenue_over_time(df, detected)
 
+    dimension_results = analyze_dimensions(df)
+
     print("--- KPI ENGINE COMPLETE ---\n")
 
     return {
-        "kpis": kpis,
-        "monthly_trend": monthly_trend
+    "kpis": kpis,
+    "monthly_trend": monthly_trend,
+    "dimensions": dimension_results
     }
+
+
+# Dimension Analysis Function
+def analyze_dimensions(df):
+
+    dimension_results = {}
+
+    for col in df.columns:
+
+        if df[col].dtype == "object":
+
+            if df[col].nunique() < 50:  # avoid IDs
+
+                revenue_by_dimension = (
+                    df.groupby(col)["Revenue"]
+                    .sum()
+                    .sort_values(ascending=False)
+                    .head(5)
+                )
+
+                dimension_results[col] = revenue_by_dimension.to_dict()
+
+    return dimension_results

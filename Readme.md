@@ -142,3 +142,15 @@ Users can download a business performance report containing:
 - KPI summary
 - AI insights
 - timestamped analysis
+
+## Day 9 Progress — Dynamic Dimension Analysis
+
+Implemented automatic categorical dimension analysis.
+
+The system now detects and analyzes columns such as:
+- Country
+- Category
+- Customer Segment
+- Region
+
+Top-performing values for each dimension are automatically calculated and included in AI insights.
