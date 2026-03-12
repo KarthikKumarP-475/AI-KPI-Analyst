@@ -11,6 +11,7 @@ from src.report_engine import generate_report
 from src.signal_engine import generate_signals
 from src.dataset_understanding import analyze_dataset_structure
 from src.brief_engine import generate_executive_brief
+from src.query_engine import generate_pandas_query, run_generated_query
 
 st.set_page_config(page_title="AI KPI Analyst", layout="wide")
 
@@ -166,6 +167,22 @@ if uploaded_file:
         answer = ask_business_question(ai_context, user_question, results)
         st.write(answer)
 
+    # NLP Query-Ask a question about the dataset
+    st.subheader("📊 Natural Language Data Query")
+
+    query_question = st.text_input("Ask a question about the dataset (data query):")
+
+    if query_question:
+
+        query = generate_pandas_query(df.columns.tolist(), query_question)
+
+        st.write("Generated Query:")
+        st.code(query)
+
+        result = run_generated_query(df, query)
+
+        st.write("Query Result:")
+        st.write(result)
     # Generate Business Report
     if st.button("Generate Business Report"):
 

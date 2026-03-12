@@ -227,6 +227,12 @@ Added an AI-powered executive brief generator.
 
 The system now produces a concise business summary based on KPIs, analytical signals, and dimension analysis. Users can download the generated executive brief for quick sharing in reports or presentations.
 
+## Day 19 Progress — Natural Language Data Queries
+
+Added an AI-powered data query engine that converts natural language questions into executable pandas queries.
+
+Users can now ask analytical questions such as "Top countries by revenue" or "Highest revenue month," and the system generates and executes the corresponding pandas query on the dataset.
+
 ## Future Improvements
 
 - Profit and margin analysis
