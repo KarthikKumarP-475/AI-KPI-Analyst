@@ -233,6 +233,12 @@ Added an AI-powered data query engine that converts natural language questions i
 
 Users can now ask analytical questions such as "Top countries by revenue" or "Highest revenue month," and the system generates and executes the corresponding pandas query on the dataset.
 
+## Day 20 Progress — Dimension Visualization
+
+Enhanced the dimension analysis section with interactive bar charts.
+
+Top-performing categories such as country, product category, or customer segment are now visualized using bar charts, making it easier to compare business performance across dimensions.
+
 ## Future Improvements
 
 - Profit and margin analysis

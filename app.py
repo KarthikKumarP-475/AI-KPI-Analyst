@@ -112,8 +112,17 @@ if uploaded_file:
     dimensions = results.get("dimensions", {})
 
     for dim, values in dimensions.items():
+
         st.write(f"Top {dim} Performance")
-        st.write(values)
+
+        dim_df = pd.DataFrame(
+            list(values.items()),
+            columns=[dim, "Revenue"]
+        ).sort_values("Revenue", ascending=False)
+
+        st.bar_chart(dim_df.set_index(dim))
+
+        st.dataframe(dim_df)
         
     # ===============================
     # Analytical Signals
