@@ -1,8 +1,10 @@
 # AI Business KPI Analyst
 
-An AI-powered analytics application that automatically analyzes business datasets, generates KPIs, and produces executive insights using AI.
+AI Business KPI Analyst is an AI-powered analytics application that automatically analyzes business datasets, generates KPIs, and produces executive insights using AI.
 
-Users can upload a dataset and instantly receive performance analysis and business explanations.
+The system simulates an **AI-powered business analyst** capable of profiling datasets, calculating key performance metrics, identifying trends, and answering business questions through natural language.
+
+Users can upload a dataset and instantly receive automated performance analysis, KPI dashboards, and AI-generated business explanations.
 
 ---
 
@@ -14,23 +16,45 @@ The system simulates an **AI-powered business analyst** capable of analyzing dat
 
 ---
 
+## Key Highlights
+
+- Built a modular **analytics pipeline architecture**
+- Automated **KPI generation and trend detection**
+- Integrated **Gemini AI for executive business insights**
+- Implemented **Ask-Your-Data natural language interface**
+- Developed an **interactive Streamlit dashboard**
+- Generated **automated downloadable business reports**
+
 ## System Architecture
 
-Dataset Upload  
-↓  
-Data Profiler  
-↓  
-Cleaning Engine  
-↓  
-KPI Engine  
-↓  
-Insight Engine  
-↓  
-Gemini AI Analysis  
-↓  
-Streamlit Web App  
-↓  
-Business Report Generator (PDF)
+    Dataset Upload
+            │
+            ▼
+    Data Profiler
+            │
+            ▼
+    Cleaning Engine
+            │
+            ▼
+        KPI Engine
+            │
+            ▼
+    Dimension Analysis
+            │
+            ▼
+    Signal Engine
+            │
+            ▼
+    Insight Engine
+            │
+            ▼
+        Gemini AI
+            │
+            ▼
+    Streamlit Web App
+            │
+            ▼
+Business Report Generator
 
 ---
 
@@ -44,18 +68,6 @@ Business Report Generator (PDF)
 - Interactive Ask-Your-Data interface
 - Streamlit web application
 - Automated business report generation (PDF)
-
----
-
-## Tech Stack
-
-- Python
-- Pandas
-- Streamlit
-- Google Gemini API
-- Modular Data Pipeline Architecture
-
----
 
 ## Application Preview
 
@@ -73,17 +85,54 @@ Business Report Generator (PDF)
 
 ---
 
+## Ask Your Data (AI Analyst)
+
+Users can ask natural language questions about their dataset.
+
+Example questions:
+
+- Which country generates the most revenue?
+- Which month performed worst?
+- Which category drives the most sales?
+- Is revenue improving over time?
+- Summarize overall business performance.
+
+The system builds structured context from KPIs and sends it to Gemini AI to generate business explanations.
+
+---
+
+## Tech Stack
+
+Python — Core application logic  
+Pandas — Data processing and KPI calculations  
+Streamlit — Interactive web application  
+Google Gemini API — AI-generated insights and question answering  
+ReportLab — Automated PDF report generation  
+python-dotenv — Secure API key management
+
+---
+
 ## Demo Datasets
 
 Sample datasets are provided in the `sample_data/` directory for quick testing.
 
 Included datasets:
 
-- **Online Retail** — transactional retail dataset with country-level sales.
-- **Superstore Sales** — retail dataset with region, category, and segment dimensions.
-- **Brazilian E-Commerce** — multi-table e-commerce dataset containing order and customer information.
+- **Online Retail** — Transactional retail dataset with country-level sales.
+- **Superstore Sales** — Retail dataset with region, category, and segment dimensions.
+- **Brazilian E-Commerce** — Multi-table e-commerce dataset containing order and customer information.
 
 Users can upload any of these datasets directly in the Streamlit application to explore KPI analysis and AI-generated insights.
+
+### Brazilian E-Commerce Dataset Note
+
+The original dataset contains several relational tables.
+Due to GitHub file size limits, the full geolocation dataset is not included in this repository.
+
+A smaller sample file is provided instead.
+
+The complete dataset can be downloaded from Kaggle:
+https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
 
 ## How to Run
 
@@ -95,76 +144,40 @@ Add your Gemini API key in `.env`: GEMINI_API_KEY=your_api_key_here
 
 Run the application: streamlit run app.py
 
-## Day 1
+## Development Timeline
 
-- Created project structure
-- Implemented dataset ingestion module
-- Built dataset profiling system
-- Developed rule-based data cleaning engine
+Day 1 — Data ingestion and cleaning pipeline  
+Day 2 — KPI engine and trend analysis  
+Day 3 — Insight engine  
+Day 4 — Gemini AI integration  
+Day 5 — Ask-Your-Data interface  
+Day 6 — Streamlit application  
+Day 7 — Documentation improvements  
+Day 8 — PDF report generation  
+Day 9 — Dimension analysis
+Day 10 – Final polish
 
-## Day 2
+## Version 2 Enhancements — Analytical Signal Engine
 
-- Implemented KPI Engine
-- Automatic detection of revenue, quantity, and date fields
-- Generated business KPIs
-- Added monthly revenue trend analysis
+### Day 11 Progress — Analytical Signals
+Introduced an analytical signal engine to enhance business intelligence capabilities.
 
-## Day 3
+The system now derives higher-level signals from KPI outputs to provide deeper performance interpretation before AI analysis.
 
-- Built Insight Engine to convert KPIs into structured summaries
-- Added growth trend detection
-- Prepared AI-ready business context
+Signals implemented:
 
-## Day 4
+• Revenue growth rate  
+• Revenue volatility  
+• Revenue trend classification  
+• Market concentration indicators  
+• Top-3 revenue concentration risk
 
-- Integrated Google Gemini AI for automated insights
-- Implemented ai_engine.py
-- Generated executive-level business explanations
-Example output:
- "Revenue growth appears driven by increasing order quantities, while mid-period fluctuations suggest seasonal demand patterns."
+These signals provide structured analytical context that improves the quality of AI-generated executive insights.
 
-## Day 5
+## Future Improvements
 
-- Added AI Ask-Your-Data interface
-- Users can ask business questions about dataset performance
-Example questions:
-- Which period performed worst?
-- Is revenue improving over time?
-- Summarize overall business performance.
-
-## Day 6
-
-- Built Streamlit web application
-- Upload dataset and automatically generate KPIs
-- AI insights and interactive Q&A interface
-- The system now functions as a mini AI-powered analytics product.
-
-## Day 7 Progress — Documentation & Project Structure
-
-Improved project documentation and usability:
-
-- Added system architecture overview
-- Organized README into clear sections
-- Added requirements.txt for easy dependency installation
-- Prepared project for easier setup and demonstration
-
-## Day 8 Progress — Business Report Generation
-
-Added automatic PDF report generation.
-
-Users can download a business performance report containing:
-- KPI summary
-- AI insights
-- timestamped analysis
-
-## Day 9 Progress — Dynamic Dimension Analysis
-
-Implemented automatic categorical dimension analysis.
-
-The system now detects and analyzes columns such as:
-- Country
-- Category
-- Customer Segment
-- Region
-
-Top-performing values for each dimension are automatically calculated and included in AI insights.
+- Profit and margin analysis
+- Customer cohort analysis
+- Multi-table relational dataset support
+- Advanced analytics signals (volatility, concentration)
+- Interactive visual dashboards

@@ -8,6 +8,7 @@ from src.insight_engine import run_insight_engine
 from src.ai_engine import generate_ai_insights
 from src.question_engine import ask_business_question
 from src.report_engine import generate_report
+from src.signal_engine import generate_signals
 
 st.set_page_config(page_title="AI KPI Analyst", layout="wide")
 
@@ -28,6 +29,14 @@ if uploaded_file:
     profile = profile_dataset(df)
     clean_df = run_cleaning_pipeline(df, profile)
     results = run_kpi_engine(clean_df)
+
+    # Generate analytical signals
+    signals = generate_signals(results)
+
+    # Add signals into results dictionary
+    results["signals"] = signals
+
+    # Build AI context
     ai_context = run_insight_engine(results)
 
     # Display KPIs
@@ -39,7 +48,7 @@ if uploaded_file:
 
     col1.metric("Total Revenue", round(kpis.get("total_revenue", 0), 2))
     col2.metric("Avg Order Value", round(kpis.get("average_order_value", 0), 2))
-    col3.metric("Total Quantity", kpis.get("total_quantity", 0))
+    col3.metric("Total Quantity", kpis.get("total_quantity", 0))    
 
     # Show Dimension Results in Streamlit
     st.subheader("📊 Dimension Analysis")
@@ -49,6 +58,22 @@ if uploaded_file:
     for dim, values in dimensions.items():
         st.write(f"Top {dim} Performance")
         st.write(values)
+        
+    # ===============================
+    # Analytical Signals
+    # ===============================
+
+    st.subheader("📈 Analytical Signals")
+
+    for key, value in signals.items():
+        nice_key = key.replace("_", " ").title()
+        st.write(f"**{nice_key}:** {value}")
+
+
+    st.subheader("⚠️ Concentration Risk")
+
+    for dim, value in signals["concentration_risk"].items():
+        st.write(f"Top 3 {dim} share:", round(value * 100, 2), "%")
 
     # AI Insights
     st.subheader("🤖 AI Executive Insights")
