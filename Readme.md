@@ -209,6 +209,12 @@ The system now analyzes uploaded datasets and classifies them into common busine
 
 This allows the AI insight engine to provide more contextual business explanations.
 
+## Day 16 Progress — KPI Growth Indicators
+
+Enhanced the dashboard with KPI growth indicators.
+
+The system now calculates month-over-month revenue change and displays growth indicators directly within KPI cards. Positive and negative changes are visualized using directional indicators, improving the interpretability of performance metrics.
+
 ## Future Improvements
 
 - Profit and margin analysis

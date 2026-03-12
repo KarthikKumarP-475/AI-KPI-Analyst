@@ -53,11 +53,42 @@ if uploaded_file:
 
     kpis = results["kpis"]
 
+    monthly_trend = results.get("monthly_trend")
+
+    revenue_growth = None
+
+    if monthly_trend is not None and len(monthly_trend) > 1:
+
+        latest = monthly_trend.iloc[-1]
+        previous = monthly_trend.iloc[-2]
+
+        if previous != 0:
+            revenue_growth = ((latest - previous) / previous) * 100
+
+
     col1, col2, col3 = st.columns(3)
 
-    col1.metric("Total Revenue", round(kpis.get("total_revenue", 0), 2))
-    col2.metric("Avg Order Value", round(kpis.get("average_order_value", 0), 2))
-    col3.metric("Total Quantity", kpis.get("total_quantity", 0))    
+    if revenue_growth is not None:
+        growth_text = f"{revenue_growth:.2f}%"
+    else:
+        growth_text = None
+
+
+    col1.metric(
+        "Total Revenue",
+        f"${kpis.get('total_revenue',0):,.2f}",
+        growth_text
+    )
+
+    col2.metric(
+        "Avg Order Value",
+        f"${kpis.get('average_order_value',0):,.2f}"
+    )
+
+    col3.metric(
+        "Total Quantity",
+        kpis.get("total_quantity", 0)
+    )
 
     # Show a monthly revenue trend chart using the KPI engine output
     st.subheader("📈 Revenue Trend")
