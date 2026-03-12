@@ -39,6 +39,9 @@ The system simulates an **AI-powered business analyst** capable of analyzing dat
         KPI Engine
             │
             ▼
+    Revenue Trend Chart
+            │
+            ▼
     Dimension Analysis
             │
             ▼
@@ -155,11 +158,11 @@ Day 6 — Streamlit application
 Day 7 — Documentation improvements  
 Day 8 — PDF report generation  
 Day 9 — Dimension analysis
-Day 10 – Final polish
+Day 10 — Final Polish
 
 ## Version 2 Enhancements — Analytical Signal Engine
 
-### Day 11 Progress — Analytical Signals
+## Day 11 Progress — Analytical Signals
 Introduced an analytical signal engine to enhance business intelligence capabilities.
 
 The system now derives higher-level signals from KPI outputs to provide deeper performance interpretation before AI analysis.
@@ -173,6 +176,12 @@ Signals implemented:
 • Top-3 revenue concentration risk
 
 These signals provide structured analytical context that improves the quality of AI-generated executive insights.
+
+## Day 12 Progress — Revenue Trend Visualization
+
+Added a revenue trend visualization to the dashboard.
+
+The application now displays a monthly revenue trend chart derived from KPI engine outputs. This allows users to visually analyze revenue growth patterns, volatility, and seasonal fluctuations before reviewing AI-generated insights.
 
 ## Future Improvements
 

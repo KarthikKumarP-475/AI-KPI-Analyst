@@ -50,6 +50,20 @@ if uploaded_file:
     col2.metric("Avg Order Value", round(kpis.get("average_order_value", 0), 2))
     col3.metric("Total Quantity", kpis.get("total_quantity", 0))    
 
+    # Show a monthly revenue trend chart using the KPI engine output
+    st.subheader("📈 Revenue Trend")
+
+    monthly_trend = results.get("monthly_trend")
+
+    if monthly_trend is not None:
+
+        trend_df = pd.DataFrame({
+            "Month": monthly_trend.index.astype(str),
+            "Revenue": monthly_trend.values
+        })
+
+        st.line_chart(trend_df.set_index("Month"))
+
     # Show Dimension Results in Streamlit
     st.subheader("📊 Dimension Analysis")
 
