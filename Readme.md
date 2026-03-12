@@ -245,6 +245,12 @@ Added safety guards to prevent failures when datasets contain missing or insuffi
 
 The system now validates cleaned datasets before executing KPI computations and analytical signal generation, ensuring the application fails gracefully when encountering incomplete datasets.
 
+## Day 22 Progress — Dataset Preview
+
+Added a dataset overview and preview section to the dashboard.
+
+Users can now view dataset size, missing values, and the first rows of the uploaded dataset before running analytics, improving transparency and usability.
+
 ## Future Improvements
 
 - Profit and margin analysis

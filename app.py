@@ -27,7 +27,26 @@ if uploaded_file:
         df = pd.read_excel(uploaded_file)
 
     st.success("Dataset uploaded successfully!")
+    st.subheader("📂 Dataset Overview")
 
+    col1, col2, col3 = st.columns(3)
+
+    col1.metric("Rows", df.shape[0])
+    col2.metric("Columns", df.shape[1])
+    col3.metric("Missing Values", df.isna().sum().sum())
+
+    st.subheader("🔎 Dataset Preview")
+    st.dataframe(df.head(10))
+
+    st.subheader("📊 Column Data Types")
+
+    dtype_df = pd.DataFrame({
+        "Column": df.columns,
+        "Data Type": df.dtypes.values
+    })
+
+    st.dataframe(dtype_df)
+    
     # Run pipeline
     profile = profile_dataset(df)
 
