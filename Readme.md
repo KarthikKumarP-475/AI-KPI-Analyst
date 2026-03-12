@@ -201,6 +201,14 @@ When a dataset is uploaded, the system now analyzes the dataset structure and ex
 
 This feature helps users quickly understand the structure and analytical potential of their data.
 
+## Day 15 Progress — Smart Dataset Type Detection
+
+Enhanced the dataset understanding module with automatic dataset type detection.
+
+The system now analyzes uploaded datasets and classifies them into common business data categories such as retail sales, e-commerce orders, financial transactions, or inventory datasets.
+
+This allows the AI insight engine to provide more contextual business explanations.
+
 ## Future Improvements
 
 - Profit and margin analysis
