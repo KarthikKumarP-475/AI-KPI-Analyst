@@ -251,6 +251,11 @@ Added a dataset overview and preview section to the dashboard.
 
 Users can now view dataset size, missing values, and the first rows of the uploaded dataset before running analytics, improving transparency and usability.
 
+## Day 23 Progress — Cleaned Dataset Export
+
+Added the ability to download the cleaned dataset after the data cleaning pipeline runs.  
+Users can now export the processed dataset as a CSV file for further analysis or validation.
+
 ## Future Improvements
 
 - Profit and margin analysis

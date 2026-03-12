@@ -46,7 +46,7 @@ if uploaded_file:
     })
 
     st.dataframe(dtype_df)
-    
+
     # Run pipeline
     profile = profile_dataset(df)
 
@@ -58,6 +58,19 @@ if uploaded_file:
     st.info(dataset_summary)
 
     clean_df = run_cleaning_pipeline(df, profile)
+
+    st.subheader("💾 Download Cleaned Dataset")
+
+    clean_csv = clean_df.to_csv(index=False).encode("utf-8")
+
+    st.download_button(
+        label="Download Cleaned Data (CSV)",
+        data=clean_csv,
+        file_name="cleaned_dataset.csv",
+        mime="text/csv"
+    )
+    st.subheader("🧹 Cleaned Dataset Preview")
+    st.dataframe(clean_df.head(10))
 
     # Safety check before running KPI engine
     if clean_df is None or clean_df.empty:
