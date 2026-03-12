@@ -189,6 +189,18 @@ Improved the Ask-Your-Data system by providing structured analytical context to 
 
 The question engine now supplies KPIs, analytical signals, dimension analysis, and trend data when answering user questions. This significantly improves the quality and reliability of AI-generated explanations.
 
+## Day 14 Progress — Automatic Dataset Understanding
+
+Added an AI-powered dataset understanding module.
+
+When a dataset is uploaded, the system now analyzes the dataset structure and explains:
+
+• The likely business domain of the dataset  
+• Which columns may represent revenue or quantity  
+• Which categorical dimensions can drive analysis  
+
+This feature helps users quickly understand the structure and analytical potential of their data.
+
 ## Future Improvements
 
 - Profit and margin analysis

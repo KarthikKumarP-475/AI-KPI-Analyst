@@ -9,6 +9,7 @@ from src.ai_engine import generate_ai_insights
 from src.question_engine import ask_business_question
 from src.report_engine import generate_report
 from src.signal_engine import generate_signals
+from src.dataset_understanding import analyze_dataset_structure
 
 st.set_page_config(page_title="AI KPI Analyst", layout="wide")
 
@@ -27,6 +28,14 @@ if uploaded_file:
 
     # Run pipeline
     profile = profile_dataset(df)
+
+    # Analyze dataset structure
+    dataset_summary = analyze_dataset_structure(profile)
+
+    # Show dataset understanding
+    st.subheader("🧠 Dataset Understanding")
+    st.info(dataset_summary)
+
     clean_df = run_cleaning_pipeline(df, profile)
     results = run_kpi_engine(clean_df)
 
