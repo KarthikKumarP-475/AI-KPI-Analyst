@@ -215,6 +215,12 @@ Enhanced the dashboard with KPI growth indicators.
 
 The system now calculates month-over-month revenue change and displays growth indicators directly within KPI cards. Positive and negative changes are visualized using directional indicators, improving the interpretability of performance metrics.
 
+## Day 17 Progress — Revenue Anomaly Detection
+
+Added automated anomaly detection for revenue trends.
+
+The system now analyzes monthly revenue patterns and identifies significant spikes or drops using statistical thresholds. Detected anomalies are displayed in the dashboard and included in AI-generated insights.
+
 ## Future Improvements
 
 - Profit and margin analysis

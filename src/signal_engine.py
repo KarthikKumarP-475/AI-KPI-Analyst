@@ -86,4 +86,30 @@ def generate_signals(kpi_results):
     # NEW SIGNAL
     signals["concentration_risk"] = concentration_risk(dimensions)
 
+    signals["revenue_anomalies"] = detect_revenue_anomalies(monthly)
+
     return signals
+
+# Detects unusual spikes or drops automatically
+def detect_revenue_anomalies(monthly_revenue):
+
+    anomalies = []
+
+    if monthly_revenue is None or len(monthly_revenue) < 3:
+        return anomalies
+
+    mean = monthly_revenue.mean()
+    std = monthly_revenue.std()
+
+    upper_threshold = mean + (2 * std)
+    lower_threshold = mean - (2 * std)
+
+    for month, value in monthly_revenue.items():
+
+        if value > upper_threshold:
+            anomalies.append(f"Revenue spike detected in {month}")
+
+        elif value < lower_threshold:
+            anomalies.append(f"Revenue drop detected in {month}")
+
+    return anomalies

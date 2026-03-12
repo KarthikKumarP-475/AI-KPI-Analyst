@@ -125,6 +125,16 @@ if uploaded_file:
 
 
     st.subheader("⚠️ Concentration Risk")
+    
+    st.subheader("🚨 Revenue Anomalies")
+
+    anomalies = signals.get("revenue_anomalies", [])
+
+    if anomalies:
+        for anomaly in anomalies:
+            st.warning(anomaly)
+    else:
+        st.write("No significant anomalies detected.")
 
     for dim, value in signals["concentration_risk"].items():
         st.write(f"Top 3 {dim} share:", round(value * 100, 2), "%")
