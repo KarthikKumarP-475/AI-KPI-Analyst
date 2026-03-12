@@ -12,7 +12,7 @@ def detect_kpi_columns(df):
     for col in df.columns:
         name = col.lower()
 
-        if any(k in name for k in ["revenue", "sales", "amount"]):
+        if any(k in name for k in ["revenue", "sales", "amount", "price"]):
             detected["revenue"] = col
 
         if any(k in name for k in ["quantity", "qty", "units"]):
@@ -53,17 +53,18 @@ def revenue_over_time(df, detected):
     if not date_col or not revenue_col:
         return None
 
+    df[date_col] = pd.to_datetime(df[date_col], errors="coerce")
+
     df["YearMonth"] = df[date_col].dt.to_period("M")
 
     monthly = (
         df.groupby("YearMonth")[revenue_col]
         .sum()
-        .reset_index()
     )
 
     print("Monthly trend created")
-    return monthly
 
+    return monthly
 
 # Main KPI Engine Function
 def run_kpi_engine(df):
@@ -76,22 +77,22 @@ def run_kpi_engine(df):
 
     monthly_trend = revenue_over_time(df, detected)
 
-    dimension_results = analyze_dimensions(df)
+    dimension_results = analyze_dimensions(df, detected["revenue"])
 
     print("--- KPI ENGINE COMPLETE ---\n")
 
     return {
-    "kpis": kpis,
-    "monthly_trend": monthly_trend,
-    "dimensions": dimension_results
+        "kpis": kpis,
+        "monthly_trend": monthly_trend,
+        "dimensions": dimension_results,
+        "detected_columns": detected
     }
-
 
 # Dimension Analysis Function
 import pandas as pd
 
 
-def analyze_dimensions(df):
+def analyze_dimensions(df, revenue_col):
 
     dimension_results = {}
 
@@ -102,7 +103,7 @@ def analyze_dimensions(df):
             if df[col].nunique() < 50:  # avoid IDs
 
                 revenue_by_dimension = (
-                    df.groupby(col)["Revenue"]
+                    df.groupby(col)[revenue_col]
                     .sum()
                     .sort_values(ascending=False)
                     .head(5)

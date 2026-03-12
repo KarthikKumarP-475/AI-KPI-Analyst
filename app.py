@@ -57,6 +57,43 @@ if uploaded_file:
     st.subheader("🧠 Dataset Understanding")
     st.info(dataset_summary)
 
+    # Run cleaning pipeline
+    clean_df = run_cleaning_pipeline(df, profile)
+
+    # Safety check
+    if clean_df is None or clean_df.empty:
+        st.error("⚠️ Dataset does not contain sufficient data for analysis.")
+        st.stop()
+
+    # Run KPI engine
+    results = run_kpi_engine(clean_df)
+
+    # -----------------------------
+    # Detected Analytical Columns
+    # -----------------------------
+    st.subheader("🧭 Detected Analytical Columns")
+
+    detected_cols = results.get("detected_columns", {})
+
+    if detected_cols:
+
+        col1, col2, col3 = st.columns(3)
+
+        col1.metric(
+            "Revenue Column",
+            detected_cols.get("revenue", "Not detected")
+        )
+
+        col2.metric(
+            "Quantity Column",
+            detected_cols.get("quantity", "Not detected")
+        )
+
+        col3.metric(
+            "Date Column",
+            detected_cols.get("date", "Not detected")
+        )
+
     clean_df = run_cleaning_pipeline(df, profile)
 
     st.subheader("💾 Download Cleaned Dataset")
@@ -177,9 +214,6 @@ if uploaded_file:
         nice_key = key.replace("_", " ").title()
         st.write(f"**{nice_key}:** {value}")
 
-
-    st.subheader("⚠️ Concentration Risk")
-
     st.subheader("🚨 Revenue Anomalies")
 
     anomalies = signals.get("revenue_anomalies", [])
@@ -190,7 +224,7 @@ if uploaded_file:
     else:
         st.write("No significant anomalies detected.")
 
-    for dim, value in signals["concentration_risk"].items():
+    for dim, value in signals.get("concentration_risk", {}).items():
         st.write(f"Top 3 {dim} share:", round(value * 100, 2), "%")
 
     # AI Insights

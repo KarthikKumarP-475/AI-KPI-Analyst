@@ -256,6 +256,12 @@ Users can now view dataset size, missing values, and the first rows of the uploa
 Added the ability to download the cleaned dataset after the data cleaning pipeline runs.  
 Users can now export the processed dataset as a CSV file for further analysis or validation.
 
+## Day 24 Progress — Detected Column Mapping
+
+Added a detected column mapping section to the dashboard.
+
+The system now displays which dataset columns are used for revenue, quantity, and date calculations, improving transparency and helping users understand how KPIs are generated.
+
 ## Future Improvements
 
 - Profit and margin analysis
