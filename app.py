@@ -101,7 +101,7 @@ if uploaded_file:
     user_question = st.text_input("Ask a business question:")
 
     if user_question:
-        answer = ask_business_question(ai_context, user_question)
+        answer = ask_business_question(ai_context, user_question, results)
         st.write(answer)
 
     # Generate Business Report

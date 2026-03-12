@@ -183,6 +183,12 @@ Added a revenue trend visualization to the dashboard.
 
 The application now displays a monthly revenue trend chart derived from KPI engine outputs. This allows users to visually analyze revenue growth patterns, volatility, and seasonal fluctuations before reviewing AI-generated insights.
 
+## Day 13 Progress — Structured AI Question Context
+
+Improved the Ask-Your-Data system by providing structured analytical context to the AI model.
+
+The question engine now supplies KPIs, analytical signals, dimension analysis, and trend data when answering user questions. This significantly improves the quality and reliability of AI-generated explanations.
+
 ## Future Improvements
 
 - Profit and margin analysis
