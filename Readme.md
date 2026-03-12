@@ -27,37 +27,37 @@ The system simulates an **AI-powered business analyst** capable of analyzing dat
 
 ## System Architecture
 
-    Dataset Upload
-            │
-            ▼
-    Data Profiler
-            │
-            ▼
-    Cleaning Engine
-            │
-            ▼
-        KPI Engine
-            │
-            ▼
-    Revenue Trend Chart
-            │
-            ▼
-    Dimension Analysis
-            │
-            ▼
-    Signal Engine
-            │
-            ▼
-    Insight Engine
-            │
-            ▼
-        Gemini AI
-            │
-            ▼
-    Streamlit Web App
-            │
-            ▼
-Business Report Generator
+Raw Dataset
+     │
+     ▼
+Data Profiling
+     │
+     ▼
+Cleaning Pipeline
+     │
+     ▼
+Structured Dataset
+     │
+     ▼
+KPI Computation
+     │
+     ▼
+Dimension Analysis
+     │
+     ▼
+Analytical Signals + Anomaly Detection
+     │
+     ▼
+Structured Business Context
+     │
+     ▼
+AI Interpretation (Gemini)
+     │
+     ▼
+Insights + Q&A + Executive Brief
+     │
+     ▼
+Dashboard + Downloadable Reports
 
 ---
 
@@ -220,6 +220,12 @@ The system now calculates month-over-month revenue change and displays growth in
 Added automated anomaly detection for revenue trends.
 
 The system now analyzes monthly revenue patterns and identifies significant spikes or drops using statistical thresholds. Detected anomalies are displayed in the dashboard and included in AI-generated insights.
+
+## Day 18 Progress — AI Executive Brief Generator
+
+Added an AI-powered executive brief generator.
+
+The system now produces a concise business summary based on KPIs, analytical signals, and dimension analysis. Users can download the generated executive brief for quick sharing in reports or presentations.
 
 ## Future Improvements
 

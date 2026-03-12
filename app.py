@@ -10,6 +10,7 @@ from src.question_engine import ask_business_question
 from src.report_engine import generate_report
 from src.signal_engine import generate_signals
 from src.dataset_understanding import analyze_dataset_structure
+from src.brief_engine import generate_executive_brief
 
 st.set_page_config(page_title="AI KPI Analyst", layout="wide")
 
@@ -125,7 +126,7 @@ if uploaded_file:
 
 
     st.subheader("⚠️ Concentration Risk")
-    
+
     st.subheader("🚨 Revenue Anomalies")
 
     anomalies = signals.get("revenue_anomalies", [])
@@ -145,6 +146,17 @@ if uploaded_file:
     insights = generate_ai_insights(ai_context)
     st.write(insights)
 
+    st.subheader("📝 AI Executive Brief")
+
+    brief = generate_executive_brief(results)
+    st.write(brief)
+
+    st.download_button(
+        label="Download Executive Brief",
+        data=brief,
+        file_name="executive_brief.txt",
+        mime="text/plain"
+    )
     # Question Section
     st.subheader("💬 Ask the AI Analyst")
 
