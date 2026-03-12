@@ -1,14 +1,54 @@
 import pandas as pd
 
+
+def normalize_monthly_series(monthly_revenue):
+
+    if monthly_revenue is None:
+        return None
+
+    # If DataFrame, select numeric column
+    if isinstance(monthly_revenue, pd.DataFrame):
+
+        numeric_cols = monthly_revenue.select_dtypes(include="number")
+
+        if numeric_cols.empty:
+            return None
+
+        monthly_revenue = numeric_cols.iloc[:, 0]
+
+    # Convert to numeric
+    monthly_revenue = pd.to_numeric(monthly_revenue, errors="coerce")
+
+    # Drop invalid values
+    monthly_revenue = monthly_revenue.dropna()
+
+    if len(monthly_revenue) == 0:
+        return None
+
+    return monthly_revenue
+
+
 # Measures whether the business is growing
 def revenue_growth(monthly_revenue):
 
     if monthly_revenue is None or len(monthly_revenue) < 2:
         return None
 
-    # Ensure we work with a Series
-    if hasattr(monthly_revenue, "columns"):
-        monthly_revenue = monthly_revenue.iloc[:, 0]
+    # If DataFrame, extract numeric column
+    if isinstance(monthly_revenue, pd.DataFrame):
+
+        numeric_cols = monthly_revenue.select_dtypes(include="number")
+
+        if numeric_cols.empty:
+            return None
+
+        monthly_revenue = numeric_cols.iloc[:, 0]
+
+    # Ensure numeric values
+    monthly_revenue = pd.to_numeric(monthly_revenue, errors="coerce").dropna()
+
+    if len(monthly_revenue) < 2:
+        return None
 
     last = monthly_revenue.iloc[-1]
     prev = monthly_revenue.iloc[-2]
@@ -18,31 +58,42 @@ def revenue_growth(monthly_revenue):
 
     return (last - prev) / prev
 
+
 # Measures how unstable revenue is
 def revenue_volatility(monthly_revenue):
 
-    if monthly_revenue is None or len(monthly_revenue) == 0:
+    monthly_revenue = normalize_monthly_series(monthly_revenue)
+
+    if monthly_revenue is None or len(monthly_revenue) < 2:
         return None
 
-    if hasattr(monthly_revenue, "columns"):
-        monthly_revenue = monthly_revenue.iloc[:, 0]
+    mean_val = monthly_revenue.mean()
 
-    return monthly_revenue.std() / monthly_revenue.mean()
+    if mean_val == 0:
+        return None
+
+    return monthly_revenue.std() / mean_val
 
 
 # Simply classification of Revenue Trend 
 def revenue_trend(monthly_revenue):
 
-    if len(monthly_revenue) < 2:
+    monthly_revenue = normalize_monthly_series(monthly_revenue)
+
+    if monthly_revenue is None or len(monthly_revenue) < 2:
         return "unknown"
 
-    if monthly_revenue.iloc[-1] > monthly_revenue.iloc[0]:
+    first = monthly_revenue.iloc[0]
+    last = monthly_revenue.iloc[-1]
+
+    if last > first:
         return "increasing"
 
-    elif monthly_revenue.iloc[-1] < monthly_revenue.iloc[0]:
+    elif last < first:
         return "decreasing"
 
     return "stable"
+
 
 # Measures dependency on one Market segment
 def market_concentration(dimension_analysis):
@@ -100,16 +151,18 @@ def generate_signals(kpi_results):
 # Detects unusual spikes or drops automatically
 def detect_revenue_anomalies(monthly_revenue):
 
+    monthly_revenue = normalize_monthly_series(monthly_revenue)
+
     anomalies = []
 
     if monthly_revenue is None or len(monthly_revenue) < 3:
         return anomalies
 
-    mean = monthly_revenue.mean()
-    std = monthly_revenue.std()
+    mean_val = monthly_revenue.mean()
+    std_val = monthly_revenue.std()
 
-    upper_threshold = mean + (2 * std)
-    lower_threshold = mean - (2 * std)
+    upper_threshold = mean_val + (2 * std_val)
+    lower_threshold = mean_val - (2 * std_val)
 
     for month, value in monthly_revenue.items():
 

@@ -70,6 +70,10 @@ if uploaded_file:
 
     if monthly_trend is not None and len(monthly_trend) > 1:
 
+        # If DataFrame, extract numeric column
+        if isinstance(monthly_trend, pd.DataFrame):
+            monthly_trend = monthly_trend.select_dtypes(include="number").iloc[:, 0]
+
         latest = monthly_trend.iloc[-1]
         previous = monthly_trend.iloc[-2]
 
@@ -108,12 +112,10 @@ if uploaded_file:
 
     if monthly_trend is not None:
 
-        trend_df = pd.DataFrame({
-            "Month": monthly_trend.index.astype(str),
-            "Revenue": monthly_trend.values
-        })
+        if isinstance(monthly_trend, pd.DataFrame):
+            monthly_trend = monthly_trend.select_dtypes(include="number").iloc[:, 0]
 
-        st.line_chart(trend_df.set_index("Month"))
+        st.line_chart(monthly_trend)
 
     # Show Dimension Results in Streamlit
     st.subheader("📊 Dimension Analysis")

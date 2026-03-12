@@ -25,7 +25,12 @@ Rules:
 
     response = model.generate_content(prompt)
 
-    return response.text.strip()
+    query = response.text.strip()
+
+    # Remove markdown formatting
+    query = query.replace("```python", "").replace("```", "").strip()
+
+    return query
 
 
 def run_generated_query(df, query):
