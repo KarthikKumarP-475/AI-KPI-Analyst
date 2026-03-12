@@ -239,6 +239,12 @@ Enhanced the dimension analysis section with interactive bar charts.
 
 Top-performing categories such as country, product category, or customer segment are now visualized using bar charts, making it easier to compare business performance across dimensions.
 
+## Day 21 Progress — Pipeline Stability Improvements
+
+Added safety guards to prevent failures when datasets contain missing or insufficient data.
+
+The system now validates cleaned datasets before executing KPI computations and analytical signal generation, ensuring the application fails gracefully when encountering incomplete datasets.
+
 ## Future Improvements
 
 - Profit and margin analysis

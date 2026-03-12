@@ -39,10 +39,19 @@ if uploaded_file:
     st.info(dataset_summary)
 
     clean_df = run_cleaning_pipeline(df, profile)
+
+    # Safety check before running KPI engine
+    if clean_df is None or clean_df.empty:
+        st.error("⚠️ Dataset does not contain sufficient data for analysis.")
+        st.stop()
+
     results = run_kpi_engine(clean_df)
 
     # Generate analytical signals
-    signals = generate_signals(results)
+    signals = {}
+
+    if results:
+        signals = generate_signals(results)
 
     # Add signals into results dictionary
     results["signals"] = signals

@@ -2,8 +2,13 @@ import pandas as pd
 
 # Measures whether the business is growing
 def revenue_growth(monthly_revenue):
-    if len(monthly_revenue) < 2:
+
+    if monthly_revenue is None or len(monthly_revenue) < 2:
         return None
+
+    # Ensure we work with a Series
+    if hasattr(monthly_revenue, "columns"):
+        monthly_revenue = monthly_revenue.iloc[:, 0]
 
     last = monthly_revenue.iloc[-1]
     prev = monthly_revenue.iloc[-2]
@@ -16,10 +21,14 @@ def revenue_growth(monthly_revenue):
 # Measures how unstable revenue is
 def revenue_volatility(monthly_revenue):
 
-    if monthly_revenue.mean() == 0:
+    if monthly_revenue is None or len(monthly_revenue) == 0:
         return None
 
+    if hasattr(monthly_revenue, "columns"):
+        monthly_revenue = monthly_revenue.iloc[:, 0]
+
     return monthly_revenue.std() / monthly_revenue.mean()
+
 
 # Simply classification of Revenue Trend 
 def revenue_trend(monthly_revenue):
@@ -73,19 +82,17 @@ def concentration_risk(dimension_analysis):
 # Generate signals from KPI results
 def generate_signals(kpi_results):
 
-    monthly = kpi_results["monthly_trend"]
-    dimensions = kpi_results["dimension_analysis"]
+    monthly = kpi_results.get("monthly_trend")
+    dimensions = kpi_results.get("dimensions", {})
 
     signals = {}
 
     signals["revenue_growth_rate"] = revenue_growth(monthly)
     signals["revenue_volatility"] = revenue_volatility(monthly)
     signals["trend_direction"] = revenue_trend(monthly)
+
     signals["market_concentration"] = market_concentration(dimensions)
-
-    # NEW SIGNAL
     signals["concentration_risk"] = concentration_risk(dimensions)
-
     signals["revenue_anomalies"] = detect_revenue_anomalies(monthly)
 
     return signals
