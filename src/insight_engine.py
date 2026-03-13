@@ -14,11 +14,14 @@ def build_business_summary(results):
     summary["total_quantity"] = kpis.get("total_quantity", 0)
     summary["dimensions"] = dimensions
 
+    if monthly is None:
+        summary["growth_percent"] = 0
+
     # Trend detection
     if monthly is not None and len(monthly) > 1:
 
-        first = monthly.iloc[0, 1]
-        last = monthly.iloc[-1, 1]
+        first = monthly.iloc[0]
+        last = monthly.iloc[-1]
 
         growth = ((last - first) / first) * 100 if first != 0 else 0
         summary["growth_percent"] = round(growth, 2)
@@ -65,8 +68,8 @@ def detect_revenue_trend(monthly):
     if monthly is None or len(monthly) < 2:
         return "Unknown"
 
-    first = monthly.iloc[0, 1]
-    last = monthly.iloc[-1, 1]
+    first = monthly.iloc[0]
+    last = monthly.iloc[-1]
 
     if last > first:
         return "Increasing"
@@ -82,7 +85,10 @@ def calculate_market_concentration(dimensions):
     if "Country" not in dimensions:
         return "Unknown"
 
-    country_sales = list(dimensions["Country"].values())
+    country_sales = list(dimensions.get("Country", {}).values())
+
+    if not country_sales:
+        return "Unknown"
 
     total = sum(country_sales)
 

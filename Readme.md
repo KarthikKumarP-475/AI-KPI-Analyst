@@ -1,10 +1,8 @@
 # AI Business KPI Analyst
 
-AI Business KPI Analyst is an AI-powered analytics application that automatically analyzes business datasets, generates KPIs, and produces executive insights using AI.
+AI Business KPI Analyst is an AI-powered analytics application that automatically analyzes business datasets, generates key performance indicators (KPIs), detects trends, and produces executive-level insights using AI.
 
-The system simulates an **AI-powered business analyst** capable of profiling datasets, calculating key performance metrics, identifying trends, and answering business questions through natural language.
-
-Users can upload a dataset and instantly receive automated performance analysis, KPI dashboards, and AI-generated business explanations.
+The system simulates an intelligent business analyst capable of profiling datasets, identifying performance drivers, answering analytical questions, and generating decision-ready reports.
 
 ---
 
@@ -25,52 +23,66 @@ The system simulates an **AI-powered business analyst** capable of analyzing dat
 - Developed an **interactive Streamlit dashboard**
 - Generated **automated downloadable business reports**
 
+## Feature Overview
+
+| Capability                    | Description                                                       |
+|-------------------------------|-------------------------------------------------------------------|
+| Dataset Profiling             | Automatically analyzes dataset structure and column types         |
+| Data Cleaning Pipeline        | Applies rule-based cleaning for missing values and formatting     |
+| KPI Engine                    | Automatically computes revenue, quantity, and performance metrics |
+| Trend Analysis                | Detects revenue patterns and growth indicators                    |
+| Dimension Analysis            | Identifies top-performing business segments                       |
+| Analytical Signals            | Detects growth trends, volatility, and market concentration       |
+| Anomaly Detection             | Identifies unusual revenue spikes or drops                        |
+| AI Insights                   | Generates executive-level explanations using Gemini AI            |
+| Natural Language Q&A          | Ask business questions about the dataset                          |
+| Natural Language Data Queries | Convert questions into executable pandas queries                  |
+| Executive Brief Generator     | Produces a concise business summary                               |
+| Business Recommendations      | Suggests actionable business strategies                           |
+| AI Chart Explanations         | Automatically interprets charts and trends                        |
+| Interactive Dashboard         | Explore analytics through a Streamlit interface                   |
+| Automated Reports             | Generate downloadable executive PDF reports                       |
+
 ## System Architecture
 
-Raw Dataset
-     │
-     ▼
-Data Profiling
-     │
-     ▼
-Cleaning Pipeline
-     │
-     ▼
+Dataset Upload
+      │
+      ▼
+Dataset Profiling
+      │
+      ▼
+Data Cleaning Pipeline
+      │
+      ▼
 Structured Dataset
-     │
-     ▼
-KPI Computation
-     │
-     ▼
+      │
+      ▼
+KPI Engine
+      │
+      ▼
+Trend Analysis
+      │
+      ▼
 Dimension Analysis
-     │
-     ▼
+      │
+      ▼
 Analytical Signals + Anomaly Detection
-     │
-     ▼
-Structured Business Context
-     │
-     ▼
-AI Interpretation (Gemini)
-     │
-     ▼
-Insights + Q&A + Executive Brief
-     │
-     ▼
-Dashboard + Downloadable Reports
+      │
+      ▼
+AI Insight Engine (Gemini)
+      │
+      ▼
+Executive Insights + Q&A + Brief
+      │
+      ▼
+Interactive Dashboard
+      │
+      ▼
+Executive Report Generation
+
+The architecture separates data processing, analytical computation, and AI interpretation into modular components for scalability and maintainability.
 
 ---
-
-## Features
-
-- Automated dataset ingestion
-- Rule-based data cleaning pipeline
-- Automatic KPI generation
-- Dynamic categorical dimension analysis
-- AI-generated executive insights
-- Interactive Ask-Your-Data interface
-- Streamlit web application
-- Automated business report generation (PDF)
 
 ## Application Preview
 
@@ -108,9 +120,9 @@ The system builds structured context from KPIs and sends it to Gemini AI to gene
 
 Python — Core application logic  
 Pandas — Data processing and KPI calculations  
-Streamlit — Interactive web application  
-Google Gemini API — AI-generated insights and question answering  
-ReportLab — Automated PDF report generation  
+Streamlit — Interactive analytics dashboard  
+Google Gemini API — AI-generated insights and business explanations  
+ReportLab — Automated executive report generation (PDF)  
 python-dotenv — Secure API key management
 
 ---
@@ -157,7 +169,7 @@ Day 5 — Ask-Your-Data interface
 Day 6 — Streamlit application  
 Day 7 — Documentation improvements  
 Day 8 — PDF report generation  
-Day 9 — Dimension analysis
+Day 9 — Dimension analysis  
 Day 10 — Final Polish
 
 ## Version 2 Enhancements — Analytical Signal Engine
@@ -291,5 +303,21 @@ Implemented a comprehensive business report generator that compiles KPIs, AI ins
 - Profit and margin analysis
 - Customer cohort analysis
 - Multi-table relational dataset support
-- Advanced analytics signals (volatility, concentration)
-- Interactive visual dashboards
+- Automated feature detection for financial metrics
+- Advanced anomaly detection models
+- Interactive visual analytics using Plotly
+- Scheduled automated report generation
+
+## Project Purpose
+
+This project was developed as a portfolio demonstration of modern data analytics engineering and AI-assisted business intelligence.
+
+It showcases the ability to design an end-to-end analytics system combining:
+
+- Data engineering pipelines
+- Automated business analytics
+- AI-driven insight generation
+- Interactive dashboards
+- Executive reporting tools
+
+The system demonstrates how AI can augment traditional data analysis workflows and support faster business decision-making.
