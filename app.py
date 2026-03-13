@@ -13,6 +13,7 @@ from src.dataset_understanding import analyze_dataset_structure
 from src.brief_engine import generate_executive_brief
 from src.query_engine import generate_pandas_query, run_generated_query
 from src.recommendation_engine import generate_recommendations
+from src.chart_explainer import explain_chart
 
 
 # A Formatting Function for numbers
@@ -235,6 +236,16 @@ if uploaded_file:
 
         st.line_chart(trend_df)
 
+    # Chart Explainer Function
+    trend_summary = monthly_trend.describe().to_string()
+    st.subheader("📊 Revenue Trend Explanation")
+
+    trend_explanation = explain_chart(
+        "Revenue Trend",
+        trend_summary
+    )
+
+    st.write(trend_explanation)
     # Show Dimension Results in Streamlit
     chart_view = st.radio(
         "Dimension Visualization",
@@ -260,6 +271,16 @@ if uploaded_file:
 
         if chart_view == "Chart View":
             st.bar_chart(chart_df)
+            
+            dim_summary = dim_df.head().to_string()
+            st.write("📊 AI Explanation")
+
+            dim_explanation = explain_chart(
+                f"{dim} Revenue Distribution",
+                dim_summary
+            )
+
+            st.write(dim_explanation)
         else:
             st.dataframe(dim_df)
 
