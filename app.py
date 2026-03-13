@@ -207,9 +207,21 @@ if uploaded_file:
         if isinstance(monthly_trend, pd.DataFrame):
             monthly_trend = monthly_trend.select_dtypes(include="number").iloc[:, 0]
 
-        st.line_chart(monthly_trend)
+        trend_df = pd.DataFrame({
+            "Month": monthly_trend.index.astype(str),
+            "Revenue": monthly_trend.values
+        })
+
+        trend_df = trend_df.set_index("Month")
+
+        st.line_chart(trend_df)
 
     # Show Dimension Results in Streamlit
+    chart_view = st.radio(
+        "Dimension Visualization",
+        ["Chart View", "Table View"]
+    )
+
     st.subheader("📊 Dimension Analysis")
 
     dimensions = results.get("dimensions", {})
@@ -223,9 +235,15 @@ if uploaded_file:
             columns=[dim, "Revenue"]
         ).sort_values("Revenue", ascending=False)
 
-        st.bar_chart(dim_df.set_index(dim))
+        chart_df = dim_df.set_index(dim)
 
-        st.dataframe(dim_df)
+        if chart_view == "Chart View":
+            st.bar_chart(chart_df)
+        else:
+            st.dataframe(dim_df)
+
+        with st.expander(f"View {dim} Data Table"):
+            st.dataframe(dim_df)
         
     # ===============================
     # Analytical Signals

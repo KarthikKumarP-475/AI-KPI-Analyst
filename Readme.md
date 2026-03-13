@@ -266,6 +266,10 @@ The system now displays which dataset columns are used for revenue, quantity, an
 
 Added interactive filters that allow users to dynamically restrict the dataset by categorical dimensions such as country or category. All analytics, KPIs, and AI insights automatically update based on the filtered dataset.
 
+## Day 26 Progress — Smart Chart Visualization
+
+Improved dashboard visualization by introducing structured chart rendering for time-series and categorical analysis. Dimension charts now include expandable data tables and support chart/table view toggling for better data exploration.
+
 ## Future Improvements
 
 - Profit and margin analysis
