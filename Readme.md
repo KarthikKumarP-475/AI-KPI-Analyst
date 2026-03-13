@@ -262,6 +262,10 @@ Added a detected column mapping section to the dashboard.
 
 The system now displays which dataset columns are used for revenue, quantity, and date calculations, improving transparency and helping users understand how KPIs are generated.
 
+## Day 25 Progress — Interactive Dataset Filters
+
+Added interactive filters that allow users to dynamically restrict the dataset by categorical dimensions such as country or category. All analytics, KPIs, and AI insights automatically update based on the filtered dataset.
+
 ## Future Improvements
 
 - Profit and margin analysis

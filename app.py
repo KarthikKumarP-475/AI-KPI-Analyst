@@ -38,6 +38,29 @@ if uploaded_file:
     st.subheader("🔎 Dataset Preview")
     st.dataframe(df.head(10))
 
+    st.subheader("🔎 Interactive Filters")
+
+    filter_columns = [
+        col for col in df.columns
+        if df[col].dtype == "object" and df[col].nunique() < 50
+    ]
+
+    filters = {}
+
+    for col in filter_columns:
+
+        selected_values = st.multiselect(
+            f"Filter by {col}",
+            options=sorted(df[col].dropna().unique())
+        )
+
+        if selected_values:
+            filters[col] = selected_values
+    filtered_df = df.copy()
+
+    for col, values in filters.items():
+        filtered_df = filtered_df[filtered_df[col].isin(values)]
+
     st.subheader("📊 Column Data Types")
 
     dtype_df = pd.DataFrame({
@@ -48,7 +71,7 @@ if uploaded_file:
     st.dataframe(dtype_df)
 
     # Run pipeline
-    profile = profile_dataset(df)
+    profile = profile_dataset(filtered_df)
 
     # Analyze dataset structure
     dataset_summary = analyze_dataset_structure(profile)
@@ -58,7 +81,7 @@ if uploaded_file:
     st.info(dataset_summary)
 
     # Run cleaning pipeline
-    clean_df = run_cleaning_pipeline(df, profile)
+    clean_df = run_cleaning_pipeline(filtered_df, profile)
 
     # Safety check
     if clean_df is None or clean_df.empty:
