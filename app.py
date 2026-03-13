@@ -13,6 +13,24 @@ from src.dataset_understanding import analyze_dataset_structure
 from src.brief_engine import generate_executive_brief
 from src.query_engine import generate_pandas_query, run_generated_query
 
+
+# A Formatting Function for numbers
+def format_large_number(value):
+
+    if value is None:
+        return value
+
+    if abs(value) >= 1_000_000_000:
+        return f"{value/1_000_000_000:.2f}B"
+
+    if abs(value) >= 1_000_000:
+        return f"{value/1_000_000:.2f}M"
+
+    if abs(value) >= 1_000:
+        return f"{value/1_000:.2f}K"
+
+    return f"{value:.2f}"
+
 st.set_page_config(page_title="AI KPI Analyst", layout="wide")
 
 st.title("🚀 AI Business KPI Analyst")
@@ -183,18 +201,18 @@ if uploaded_file:
 
     col1.metric(
         "Total Revenue",
-        f"${kpis.get('total_revenue',0):,.2f}",
+        f"${format_large_number(kpis.get('total_revenue',0))}",
         growth_text
     )
 
     col2.metric(
         "Avg Order Value",
-        f"${kpis.get('average_order_value',0):,.2f}"
+        f"${format_large_number(kpis.get('average_order_value',0))}"
     )
 
     col3.metric(
         "Total Quantity",
-        kpis.get("total_quantity", 0)
+        format_large_number(kpis.get("total_quantity", 0))
     )
 
     # Show a monthly revenue trend chart using the KPI engine output
@@ -234,6 +252,8 @@ if uploaded_file:
             list(values.items()),
             columns=[dim, "Revenue"]
         ).sort_values("Revenue", ascending=False)
+        
+        dim_df["Revenue"] = dim_df["Revenue"].apply(format_large_number)
 
         chart_df = dim_df.set_index(dim)
 

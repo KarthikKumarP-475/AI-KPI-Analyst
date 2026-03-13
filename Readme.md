@@ -270,6 +270,10 @@ Added interactive filters that allow users to dynamically restrict the dataset b
 
 Improved dashboard visualization by introducing structured chart rendering for time-series and categorical analysis. Dimension charts now include expandable data tables and support chart/table view toggling for better data exploration.
 
+## Day 27 Progress — Smart Number Formatting
+
+Improved dashboard readability by introducing automatic large-number formatting (K, M, B). This enhances KPI cards and dimension tables for clearer business presentation.
+
 ## Future Improvements
 
 - Profit and margin analysis
