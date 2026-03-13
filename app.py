@@ -12,6 +12,7 @@ from src.signal_engine import generate_signals
 from src.dataset_understanding import analyze_dataset_structure
 from src.brief_engine import generate_executive_brief
 from src.query_engine import generate_pandas_query, run_generated_query
+from src.recommendation_engine import generate_recommendations
 
 
 # A Formatting Function for numbers
@@ -252,7 +253,7 @@ if uploaded_file:
             list(values.items()),
             columns=[dim, "Revenue"]
         ).sort_values("Revenue", ascending=False)
-        
+
         dim_df["Revenue"] = dim_df["Revenue"].apply(format_large_number)
 
         chart_df = dim_df.set_index(dim)
@@ -305,6 +306,11 @@ if uploaded_file:
         file_name="executive_brief.txt",
         mime="text/plain"
     )
+
+    st.subheader("📌 Business Recommendations")
+    recommendations = generate_recommendations(results)
+    st.write(recommendations)
+
     # Question Section
     st.subheader("💬 Ask the AI Analyst")
 

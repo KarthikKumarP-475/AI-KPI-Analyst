@@ -274,6 +274,10 @@ Improved dashboard visualization by introducing structured chart rendering for t
 
 Improved dashboard readability by introducing automatic large-number formatting (K, M, B). This enhances KPI cards and dimension tables for clearer business presentation.
 
+## Day 28 Progress — AI Business Recommendations
+
+Added an AI-powered recommendation engine that generates actionable business strategies based on KPIs, trends, and market concentration signals. This transforms the system from a reporting tool into a decision-support platform.
+
 ## Future Improvements
 
 - Profit and margin analysis
