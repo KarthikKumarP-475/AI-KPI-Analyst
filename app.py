@@ -271,7 +271,7 @@ if uploaded_file:
 
         if chart_view == "Chart View":
             st.bar_chart(chart_df)
-            
+
             dim_summary = dim_df.head().to_string()
             st.write("📊 AI Explanation")
 
@@ -357,10 +357,17 @@ if uploaded_file:
 
         st.write("Query Result:")
         st.write(result)
+        
     # Generate Business Report
     if st.button("Generate Business Report"):
 
-        report_file = generate_report(kpis, insights)
+        report_file = generate_report(
+            kpis,
+            insights,
+            brief,
+            recommendations,
+            signals
+        )
 
         if report_file:
             with open(report_file, "rb") as f:
