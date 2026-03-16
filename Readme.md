@@ -45,6 +45,7 @@ The system simulates an **AI-powered business analyst** capable of analyzing dat
 
 ## System Architecture
 
+```
 Dataset Upload
       │
       ▼
@@ -69,7 +70,7 @@ Dimension Analysis
 Analytical Signals + Anomaly Detection
       │
       ▼
-AI Insight Engine (Gemini)
+AI Insight Engine
       │
       ▼
 Executive Insights + Q&A + Brief
@@ -79,25 +80,35 @@ Interactive Dashboard
       │
       ▼
 Executive Report Generation
-
-The architecture separates data processing, analytical computation, and AI interpretation into modular components for scalability and maintainability.
+```
 
 ---
 
 ## Application Preview
 
-### Dashboard
-![Dashboard](assets/app_dashboard.png)
+### KPI Dashboard
+![Dashboard](assets/dashboard.png)
 
-### KPI
-![KPI](assets/key_performance_indicators.png)
+### Dataset Upload
+![Dataset Upload](assets/dataset_upload.png)
+
+### Dataset Understanding
+![Dataset Understanding](assets/dataset_understanding.png)
+
+### Dimension Analysis
+![Dimension Analysis](assets/dimension_analysis.png)
+
+### Analytical Signals
+![Analytical Signals](assets/analytical_signals.png)
 
 ### AI Insights
 ![AI Insights](assets/ai_insights.png)
 
-### AI Analyst
-![AI Analyst](assets/ai_analyst.png)
+### Business Recommendations
+![Recommendations](assets/recommendations.png)
 
+### Ask AI Analyst
+![AI Analyst](assets/ai_analyst.png)
 ---
 
 ## Ask Your Data (AI Analyst)

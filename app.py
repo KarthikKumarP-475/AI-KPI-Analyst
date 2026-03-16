@@ -331,7 +331,7 @@ if uploaded_file:
     st.subheader("📌 Business Recommendations")
     recommendations = generate_recommendations(results)
     st.write(recommendations)
-
+    
     # Question Section
     st.subheader("💬 Ask the AI Analyst")
 
